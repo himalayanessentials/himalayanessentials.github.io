@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himalayan Essential - Authentic Products from the Himalayas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1600x900/a3bfb8/ffffff?text=Himalayan+Valley');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title {
+            @apply text-3xl md:text-4xl font-bold text-gray-800 text-center mb-4;
+        }
+        .section-subtitle {
+            @apply text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto;
+        }
+        .product-card {
+            @apply bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out;
+        }
+        .btn {
+            @apply px-6 py-3 rounded-lg font-semibold text-white transition-transform duration-300;
+        }
+        .btn-primary {
+            @apply bg-amber-600 hover:bg-amber-700;
+        }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f59e0b; /* amber-500 */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transform: translateY(200%);
+            transition: transform 0.5s ease-in-out;
+            z-index: 1000;
+        }
+        .notification.show {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-amber-800 flex items-center">
+                <!-- New Mountain Logo SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 mr-3" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" fill="#FFFBEB"/>
+                  <path d="M15.5 10.5L12 6L8.5 10.5L5 14H19L15.5 10.5Z" fill="#B45309"/>
+                  <path d="M13.5 12.5L12 11L9.5 13.5L8 12L5 15H19L13.5 12.5Z" fill="#FFFFFF"/>
+                </svg>
+                Himalayan Essential
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="text-gray-600 hover:text-amber-600">Home</a>
+                <a href="#products" class="text-gray-600 hover:text-amber-600">Products</a>
+                <a href="#about" class="text-gray-600 hover:text-amber-600">About Us</a>
+                <a href="#contact" class="text-gray-600 hover:text-amber-600">Contact</a>
+            </div>
+            <button id="cart-button" class="flex items-center space-x-2 border border-amber-600 text-amber-600 px-4 py-2 rounded-lg hover:bg-amber-600 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span class="hidden sm:block">Cart</span>
+                <span id="cart-count" class="bg-amber-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#home" class="block text-gray-600 hover:text-amber-600">Home</a>
+            <a href="#products" class="block text-gray-600 hover:text-amber-600">Products</a>
+            <a href="#about" class="block text-gray-600 hover:text-amber-600">About Us</a>
+            <a href="#contact" class="block text-gray-600 hover:text-amber-600">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-32 md:py-48 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Authentic Flavors from the Himalayas</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Pure, natural, and sourced directly from the pristine valleys of Himachal Pradesh.</p>
+                <a href="#products" class="btn btn-primary text-lg">Shop Now</a>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-20 bg-amber-50">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Our Featured Products</h2>
+                <p class="section-subtitle">Handpicked and delivered with care, bringing the goodness of the mountains to your doorstep.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Product 1: Walnuts -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/c7a58a/ffffff?text=Walnuts" alt="Himachali Walnuts" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/c7a58a/ffffff?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Premium Walnuts (Kagzi)</h3>
+                            <p class="text-gray-600 mb-4">Crisp, flavorful, and packed with Omega-3. Sourced from the high-altitude orchards of Kinnaur.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-amber-600">₹750 / kg</span>
+                                <button class="add-to-cart-btn btn bg-gray-800 hover:bg-gray-900">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 2: Kidney Beans -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/a35757/ffffff?text=Kidney+Beans" alt="Himachali Kidney Beans" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/a35757/ffffff?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Organic Kidney Beans (Rajma)</h3>
+                            <p class="text-gray-600 mb-4">Famous for their unique taste and texture. Grown organically in the fertile lands of Bharmour.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-amber-600">₹250 / kg</span>
+                                <button class="add-to-cart-btn btn bg-gray-800 hover:bg-gray-900">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 3: Honey -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/f5c542/ffffff?text=Honey" alt="Himachali Honey" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f5c542/ffffff?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Wildflower Honey</h3>
+                            <p class="text-gray-600 mb-4">Raw and unprocessed honey, harvested from the wild blossoms of the Himalayan forests.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-amber-600">₹500 / 500g</span>
+                                <button class="add-to-cart-btn btn bg-gray-800 hover:bg-gray-900">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 4: SeeBuck Thorn -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/f7a42a/ffffff?text=Seabuckthorn" alt="Himalayan SeeBuck Thorn Tea" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f7a42a/ffffff?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">SeeBuck Thorn (Chaaku)</h3>
+                            <p class="text-gray-600 mb-4">A natural shrub from Lahaul & Spiti, its leaves and fruit make an immunity-boosting tea rich in Vitamin C and antioxidants.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-amber-600">₹600 / 250g</span>
+                                <button class="add-to-cart-btn btn bg-gray-800 hover:bg-gray-900">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 5: Bichu Butti -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/6b8e23/ffffff?text=Bichu+Butti" alt="Himalayan Bichu Butti (Stinging Nettle)" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/6b8e23/ffffff?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Bichu Butti (Nettle Tea)</h3>
+                            <p class="text-gray-600 mb-4">Wild Himalayan stinging nettle used as a traditional tea. Known for cleansing, anti-inflammatory properties, and helping control blood pressure.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-amber-600">₹450 / 100g</span>
+                                <button class="add-to-cart-btn btn bg-gray-800 hover:bg-gray-900">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 6: Rajmah (Kidney Beans) -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/c47171/ffffff?text=Rajmah" alt="Himalayan Rajmah" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/c47171/ffffff?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Rajmah (Kidney Beans)</h3>
+                            <p class="text-gray-600 mb-4">Grown at high altitudes without pesticides, this protein-rich pulse is easy to cook, aromatic, and has a superior taste thanks to traditional farming methods.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-amber-600">₹280 / kg</span>
+                                <button class="add-to-cart-btn btn bg-gray-800 hover:bg-gray-900">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 7: Desi Akhrot -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/b58e6f/ffffff?text=Local+Walnut" alt="Desi Akhrot" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/b58e6f/ffffff?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Desi Akhrot (Local Walnut)</h3>
+                            <p class="text-gray-600 mb-4">From Lugvalley, this thin-shelled walnut has high oil content, a buttery flavor, and is rich in Omega-3. It's naturally grown and easy to crack.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-amber-600">₹700 / kg</span>
+                                <button class="add-to-cart-btn btn bg-gray-800 hover:bg-gray-900">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 8: Himalayan Raw Honey -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/ffbf00/ffffff?text=Raw+Honey" alt="Himalayan Raw Honey" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/ffbf00/ffffff?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Himalayan Raw Honey</h3>
+                            <p class="text-gray-600 mb-4">Harvested once a year from untouched forests, this pure, medicinal honey from diverse wildflowers is free from pesticides, offering unparalleled quality.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-amber-600">₹850 / 500g</span>
+                                <button class="add-to-cart-btn btn bg-gray-800 hover:bg-gray-900">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 9: Ghee -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/fcd34d/ffffff?text=Pure+Ghee" alt="Himalayan Ghee" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/fcd34d/ffffff?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Traditional Himalayan Ghee</h3>
+                            <p class="text-gray-600 mb-4">Crafted using timeless methods from the pure milk of free-grazing cattle in high-altitude pastures. Our ghee has a rich, nutty aroma and is packed with natural goodness.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-amber-600">₹950 / 500g</span>
+                                <button class="add-to-cart-btn btn bg-gray-800 hover:bg-gray-900">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <div class="grid grid-cols-2 gap-4">
+                            <img src="https://placehold.co/300x300/8db5a9/ffffff?text=Farmer" alt="Himalayan Farmer" class="rounded-xl shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x300/8db5a9/ffffff?text=Image+Error';">
+                            <img src="https://placehold.co/300x300/a3bfb8/ffffff?text=Landscape" alt="Himalayan Landscape" class="rounded-xl shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x300/a3bfb8/ffffff?text=Image+Error';">
+                            <img src="https://placehold.co/300x300/c7a58a/ffffff?text=Produce" alt="Fresh Walnuts" class="rounded-xl shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x300/c7a58a/ffffff?text=Image+Error';">
+                            <img src="https://placehold.co/300x300/b58e6f/ffffff?text=Village" alt="Himalayan Village" class="rounded-xl shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x300/b58e6f/ffffff?text=Image+Error';">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="section-title text-left mb-4">Our Roots: From the Heart of the Himalayas</h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed">Himalayan Essential began not as a business, but as a passion to bridge the distance between the pristine, untouched valleys of Himachal Pradesh and your home. We journey deep into the mountains, partnering with generations-old farming families who cultivate their land with respect and time-honored traditions.</p>
+                        <p class="text-gray-600 mb-4 leading-relaxed">Our promise is simple: to bring you products that are as pure as the mountain air. We believe in fair partnerships that empower local communities, sustainable practices that honor the earth, and quality that speaks for itself. Every jar of honey, every handful of walnuts, carries a story of its origin.</p>
+                        <p class="text-gray-600 mb-6 leading-relaxed">When you choose Himalayan Essential, you're not just buying a product; you're supporting a way of life and tasting a genuine piece of the Himalayas. Thank you for being part of our story.</p>
+                        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="py-20 bg-amber-50">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">We are proud to bring joy and health to our customers' homes.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <p class="text-gray-600 italic mb-4">"The walnuts were the freshest I've ever had! You can taste the difference. Will definitely order again."</p>
+                        <p class="font-bold text-amber-700">- Anjali S., Mumbai</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <p class="text-gray-600 italic mb-4">"Finally, real Himachali rajma! It cooked perfectly and tasted just like home. Thank you, Himalayan Essential."</p>
+                        <p class="font-bold text-amber-700">- Vikram R., Delhi</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <p class="text-gray-600 italic mb-4">"The honey is absolutely divine. It's pure, thick, and has a wonderful floral aroma. My family loves it."</p>
+                        <p class="font-bold text-amber-700">- Priya K., Bangalore</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Himalayan Essential</h3>
+                    <p class="text-gray-400">Bringing the purity of the Himalayas to your home.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li class="mb-2"><a href="#products" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li class="mb-2"><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="text-gray-400 mb-2">📧 contact.himalayanessential@gmail.com</p>
+                    <p class="text-gray-400 mb-4">📞 +91 98765 43210</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.28C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Himalayan Essential. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification">
+        Item added to cart!
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cart functionality
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+        const cartCount = document.getElementById('cart-count');
+        const notification = document.getElementById('notification');
+        let itemsInCart = 0;
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                itemsInCart++;
+                cartCount.textContent = itemsInCart;
+                
+                // Show notification
+                notification.classList.add('show');
+                
+                // Hide notification after 3 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
+
+

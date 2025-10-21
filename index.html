@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Himalayan Essential - Authentic Products from the Himalayas</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -59,16 +60,20 @@
     <!-- Header -->
     <header id="main-header" class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- This is the NEW code with your logo -->
-<a href="#home" class="nav-link text-2xl font-serif font-semibold text-brand-dark-green flex items-center">
-    <!-- Replace 'logo.png' with the actual name of your logo file -->
-    <img src="logo.png" alt="Himalayan Essential Logo" class="h-20 w-50 mr-3 object-contain">
-</a>
-            <div class="hidden md:flex space-x-8 items-center text-lg">
+            <a href="#home" class="nav-link text-2xl font-serif font-semibold text-brand-dark-green flex items-center">
+                <img src="logo.png" alt="Himalayan Essential Logo" class="h-20 w-50 mr-3 object-contain">
+                Himalayan Essential
+            </a>
+            <div class="hidden md:flex space-x-8 items-center text-lg" id="nav-links-logged-out">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#shop" class="nav-link">Shop</a>
                 <a href="#about" class="nav-link">About Us</a>
                 <a href="#contact" class="nav-link">Contact</a>
+            </div>
+             <div class="hidden md:flex items-center space-x-4 text-lg" id="nav-links-logged-in">
+                 <span id="user-name" class="font-semibold text-brand-dark-green"></span>
+                 <img id="user-picture" class="h-10 w-10 rounded-full" src="" alt="User">
+                 <button id="logout-button" class="text-gray-600 hover:text-brand-brown">Logout</button>
             </div>
             <div class="flex items-center space-x-4">
                 <button id="cart-button" class="flex items-center space-x-2 text-brand-green">
@@ -99,7 +104,7 @@
         <div id="page-home" class="page active">
             <section class="relative bg-brand-dark-green text-white">
                 <img src="image-bg.png" alt="Himalayan landscape" class="absolute inset-0 w-full h-full object-cover opacity-20">
-                <div class="relative coHarvestntainer mx-auto px-6 py-32 md:py-48 text-center">
+                <div class="relative container mx-auto px-6 py-32 md:py-48 text-center">
                     <h1 class="text-4xl md:text-6xl font-serif font-semibold leading-tight mb-4">Purity from Peak to Package</h1>
                     <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-200">Authentic, sustainably sourced essentials from the heart of the Himalayas.</p>
                     <a href="#shop" class="nav-link bg-brand-brown hover:bg-brand-light-brown text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors">Explore Our Products</a>
@@ -112,25 +117,25 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <a href="#shop" data-category="teas" class="category-card-link group block text-center">
                             <div class="overflow-hidden rounded-lg shadow-md group-hover:shadow-xl transition-shadow">
-                                <img src="https://placehold.co/400x400/D4AC6E/3A5A40?text=Herbal+Teas" alt="Herbal Teas" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <img src="Herbal Teas & Infusions-ct.png" alt="Herbal Teas" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
                             </div>
                             <h3 class="mt-4 text-xl font-semibold text-brand-green">Herbal Teas & Infusions</h3>
                         </a>
                         <a href="#shop" data-category="pulses" class="category-card-link group block text-center">
                             <div class="overflow-hidden rounded-lg shadow-md group-hover:shadow-xl transition-shadow">
-                                <img src="https://placehold.co/400x400/A98743/F3EFEA?text=Pulses+%26+Grains" alt="Pulses & Grains" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <img src="Pulses & Grains-ct.png" alt="Pulses & Grains" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
                             </div>
                             <h3 class="mt-4 text-xl font-semibold text-brand-green">Pulses & Grains</h3>
                         </a>
                          <a href="#shop" data-category="nuts" class="category-card-link group block text-center">
                             <div class="overflow-hidden rounded-lg shadow-md group-hover:shadow-xl transition-shadow">
-                                <img src="https://placehold.co/400x400/8c6d36/ffffff?text=Nuts+%26+Dry+Fruits" alt="Nuts & Dry Fruits" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <img src="Nuts & Dry Fruits-ct.png" alt="Nuts & Dry Fruits" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
                             </div>
                             <h3 class="mt-4 text-xl font-semibold text-brand-green">Nuts & Dry Fruits</h3>
                         </a>
                         <a href="#shop" data-category="pantry" class="category-card-link group block text-center">
                             <div class="overflow-hidden rounded-lg shadow-md group-hover:shadow-xl transition-shadow">
-                                <img src="https://placehold.co/400x400/c7a58a/3A5A40?text=Pantry+Staples" alt="Pantry Staples" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <img src="Pantry Staples-ct.png" alt="Pantry Staples" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
                             </div>
                             <h3 class="mt-4 text-xl font-semibold text-brand-green">Pantry Staples</h3>
                         </a>
@@ -255,7 +260,7 @@
                         <form action="#">
                             <section>
                                 <h2 class="text-xl font-semibold text-brand-dark-green mb-4">Contact Information</h2>
-                                <input type="email" placeholder="Email" class="form-input" required>
+                                <input type="email" id="checkout-email" placeholder="Email" class="form-input" required>
                             </section>
 
                             <section class="mt-8">
@@ -357,6 +362,15 @@
         </div>
     </div>
     
+    <!-- Google Sign-In Modal -->
+    <div id="signin-modal-overlay" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center">
+        <div id="signin-modal" class="bg-white rounded-lg shadow-2xl p-8 text-center max-w-sm m-4">
+            <h2 class="text-2xl font-serif text-brand-dark-green mb-4">Please Sign In</h2>
+            <p class="text-gray-600 mb-6">You need to sign in to proceed with your order.</p>
+            <div id="g_id_signin"></div>
+        </div>
+    </div>
+    
      <!-- Toast Notification -->
     <div id="toast-notification" class="fixed bottom-5 right-5 bg-brand-dark-green text-white py-3 px-6 rounded-lg shadow-lg transform translate-y-20 opacity-0">
         Item added to cart!
@@ -401,15 +415,15 @@
 
     <script>
         const products = [
-            { id: 1, name: 'Premium Walnuts (Kagzi)', price: 750, unit: 'kg', description: 'Crisp, flavorful, and packed with Omega-3 from Kinnaur.', category: 'nuts', img: 'https://placehold.co/100x100/c7a58a/ffffff?text=W' },
-            { id: 2, name: 'Organic Kidney Beans (Rajma)', price: 250, unit: 'kg', description: 'Famous for their unique taste, grown organically in Bharmour.', category: 'pulses', img: 'https://placehold.co/100x100/a35757/ffffff?text=K' },
-            { id: 3, name: 'Wildflower Honey', price: 500, unit: '500g', description: 'Raw, unprocessed honey from the wild blossoms of Himalayan forests.', category: 'pantry', img: 'https://placehold.co/100x100/f5c542/ffffff?text=H' },
-            { id: 4, name: 'SeeBuck Thorn (Chaaku)', price: 600, unit: '250g', description: 'Immunity-boosting tea from Lahaul & Spiti, rich in Vitamin C.', category: 'teas', img: 'https://placehold.co/100x100/f7a42a/ffffff?text=S' },
-            { id: 5, name: 'Bichu Butti (Nettle Tea)', price: 450, unit: '100g', description: 'Wild Himalayan stinging nettle with cleansing properties.', category: 'teas', img: 'https://placehold.co/100x100/6b8e23/ffffff?text=B' },
-            { id: 6, name: 'High-Altitude Rajmah', price: 280, unit: 'kg', description: 'Pesticide-free, protein-rich pulse with superior taste.', category: 'pulses', img: 'https://placehold.co/100x100/c47171/ffffff?text=R' },
-            { id: 7, name: 'Desi Akhrot (Local Walnut)', price: 700, unit: 'kg', description: 'Thin-shelled, buttery walnuts from Lugvalley, rich in Omega-3.', category: 'nuts', img: 'https://placehold.co/100x100/b58e6f/ffffff?text=D' },
-            { id: 8, name: 'Himalayan Raw Honey', price: 850, unit: '500g', description: 'Pure, medicinal honey from diverse wildflowers, harvested once a year.', category: 'pantry', img: 'https://placehold.co/100x100/ffbf00/ffffff?text=H' },
-            { id: 9, name: 'Traditional Himalayan Ghee', price: 950, unit: '500g', description: 'Rich, nutty ghee from the pure milk of free-grazing cattle.', category: 'pantry', img: 'https://placehold.co/100x100/fcd34d/ffffff?text=G' },
+            { id: 1, name: 'Premium Walnuts (Kagzi)', price: 750, unit: 'kg', description: 'Crisp, flavorful, and packed with Omega-3 from Kinnaur.', category: 'nuts',img: 'Premium Walnuts.png' },
+            { id: 2, name: 'Organic Kidney Beans (Rajma)', price: 250, unit: 'kg', description: 'Famous for their unique taste, grown organically in Bharmour.', category: 'pulses', img: 'Organic Kidney Beans (Rajma).png' },
+            { id: 3, name: 'Wildflower Honey', price: 500, unit: '500g', description: 'Raw, unprocessed honey from the wild blossoms of Himalayan forests.', category: 'pantry', img: 'Wildflower Honey.png' },
+            { id: 4, name: 'SeeBuck Thorn (Chaaku)', price: 600, unit: '250g', description: 'Immunity-boosting tea from Lahaul & Spiti, rich in Vitamin C.', category: 'teas', img: 'SeeBuck Thorn (Chaaku).png' },
+            { id: 5, name: 'Bichu Butti (Nettle Tea)', price: 450, unit: '100g', description: 'Wild Himalayan stinging nettle with cleansing properties.', category: 'teas', img: 'Bichu Butti (Nettle Tea).png' },
+            { id: 6, name: 'High-Altitude Rajmah', price: 280, unit: 'kg', description: 'Pesticide-free, protein-rich pulse with superior taste.', category: 'pulses', img: 'High-Altitude Rajmah.png' },
+            { id: 7, name: 'Desi Akhrot (Local Walnut)', price: 700, unit: 'kg', description: 'Thin-shelled, buttery walnuts from Lugvalley, rich in Omega-3.', category: 'nuts', img: 'Desi Akhrot (Local Walnut).png' },
+            { id: 8, name: 'Himalayan Raw Honey', price: 850, unit: '500g', description: 'Pure, medicinal honey from diverse wildflowers, harvested once a year.', category: 'pantry', img: 'Himalayan Raw Honey.png' },
+            { id: 9, name: 'Traditional Himalayan Ghee', price: 950, unit: '500g', description: 'Rich, nutty ghee from the pure milk of free-grazing cattle.', category: 'pantry', img: 'Traditional Himalayan Ghee.png' },
         ];
         
         const indianStatesAndDistricts = {
@@ -452,6 +466,7 @@
         };
 
         let cart = [];
+        let currentUser = null;
         const SHIPPING_COST = 50.00;
         
         document.addEventListener('DOMContentLoaded', () => {
@@ -466,6 +481,14 @@
             const categoryFilter = document.getElementById('category-filter');
             const toast = document.getElementById('toast-notification');
             const returnToCartLink = document.getElementById('return-to-cart-link');
+            
+            // Auth Elements
+            const signInModalOverlay = document.getElementById('signin-modal-overlay');
+            const navLinksLoggedOut = document.getElementById('nav-links-logged-out');
+            const navLinksLoggedIn = document.getElementById('nav-links-logged-in');
+            const userNameEl = document.getElementById('user-name');
+            const userPictureEl = document.getElementById('user-picture');
+            const logoutButton = document.getElementById('logout-button');
 
             // Cart Panel Elements
             const cartOverlay = document.getElementById('cart-overlay');
@@ -486,6 +509,7 @@
             const checkoutTotal = document.getElementById('checkout-total');
             const stateSelect = document.getElementById('state-select');
             const districtSelect = document.getElementById('district-select');
+            const checkoutEmailEl = document.getElementById('checkout-email');
 
             const formatPrice = (price) => `₹${price.toFixed(2)}`;
 
@@ -496,6 +520,61 @@
                     toast.classList.add('translate-y-20', 'opacity-0');
                 }, 3000);
             };
+
+            // --- Auth Logic ---
+            const openSignInModal = () => {
+                signInModalOverlay.classList.remove('hidden');
+                signInModalOverlay.classList.add('flex');
+            };
+
+            const closeSignInModal = () => {
+                signInModalOverlay.classList.add('hidden');
+                signInModalOverlay.classList.remove('flex');
+            };
+
+            const updateHeaderUI = () => {
+                if (currentUser) {
+                    navLinksLoggedOut.style.display = 'none';
+                    navLinksLoggedIn.style.display = 'flex';
+                    userNameEl.textContent = `Hi, ${currentUser.name.split(' ')[0]}`;
+                    userPictureEl.src = currentUser.picture;
+                } else {
+                    navLinksLoggedOut.style.display = 'flex';
+                    navLinksLoggedIn.style.display = 'none';
+                }
+            };
+            
+            window.handleCredentialResponse = function(response) {
+                const responsePayload = (token => {
+                    var base64Url = token.split('.')[1];
+                    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                    return JSON.parse(jsonPayload);
+                })(response.credential);
+
+                currentUser = {
+                    name: responsePayload.name,
+                    email: responsePayload.email,
+                    picture: responsePayload.picture
+                };
+                
+                closeSignInModal();
+                updateHeaderUI();
+                
+                // Automatically proceed to checkout after successful login
+                closeCart();
+                renderCheckoutSummary();
+                showPage('checkout');
+            }
+
+            logoutButton.addEventListener('click', () => {
+                currentUser = null;
+                google.accounts.id.disableAutoSelect();
+                updateHeaderUI();
+                showPage('home');
+            });
 
             // --- Cart Logic ---
             const openCart = () => {
@@ -618,6 +697,10 @@
                 checkoutSubtotal.textContent = formatPrice(subtotal);
                 checkoutShipping.textContent = formatPrice(SHIPPING_COST);
                 checkoutTotal.textContent = formatPrice(total);
+                
+                if (currentUser) {
+                    checkoutEmailEl.value = currentUser.email;
+                }
             };
 
             // --- Product & Page Rendering Logic ---
@@ -701,11 +784,17 @@
             cartButton.addEventListener('click', openCart);
             closeCartBtn.addEventListener('click', closeCart);
             cartOverlay.addEventListener('click', (e) => { if (e.target === cartOverlay) closeCart(); });
+            
             checkoutBtn.addEventListener('click', () => {
-                closeCart();
-                renderCheckoutSummary();
-                showPage('checkout');
+                if (currentUser) {
+                    closeCart();
+                    renderCheckoutSummary();
+                    showPage('checkout');
+                } else {
+                    openSignInModal();
+                }
             });
+            
             returnToCartLink.addEventListener('click', (e) => {
                 e.preventDefault();
                 showPage('shop'); 
@@ -730,13 +819,25 @@
             });
 
             // --- Initial Render ---
+            // IMPORTANT: Replace with your actual Google Client ID
+            window.onload = function () {
+                google.accounts.id.initialize({
+                    client_id: '548147883627-8r9s0kpftv7jj4f4ueklh4j66hnb4uvm.apps.googleusercontent.com',
+                    callback: handleCredentialResponse
+                });
+                google.accounts.id.renderButton(
+                    document.getElementById("g_id_signin"),
+                    { theme: "outline", size: "large", width: "100%" }
+                );
+            }
+
+            updateHeaderUI();
             populateStates();
             renderProducts();
             updateCart();
             showPage('home');
         });
     </script>
-
 </body>
 </html>
 
